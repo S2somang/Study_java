@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 선택자</title>
+    <style>
+        #test1 *:first-child{
+            background: red;
+            color:white;
+        }
+        #test1 *:last-child{ /* 아래에 있으면 이거 적용됨 ^^..*/
+            background: orange;
+            color:#fff;
+        }
+        #test1 *:nth-child(2n){ /* nth-child() : 함수형 선택자 */
+            background:yellow;
+            color:#fff;
+        }
+        #test1 *:nth-child(2){
+            background: yellowgreen;
+        }
+        #test1 *:nth-last-child(2){
+            background: skyblue;
+            color:red;
+        }
+
+        #test2 *:first-of-type{ /* 각 태그별로 첫번째..! */
+            background: orange;
+            color: #fff;
+        }
+
+        #test2 *:last-of-type{
+            background: yellow;
+            color:red;
+        }
+
+        #test2 *:nth-of-type(2n){
+            background: yellowgreen;
+            color:#fff;
+        }
+        #test2 *:nth-last-of-type(3){/*밑에서 세번째*/
+            background: skyblue;
+            color:#fff;
+        }
+        #test3 p::first-letter{
+            font-size: 2em;
+        }
+
+        #test3 p::selection{ /* 블록 지정시 색 red*/
+            background: red;
+            color:white;
+        }
+
+        #test4 p:not(:nth-child(2n)){/* not() : ()안에 쓴걸 부정 ...*/
+            background: orange;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>일반 구조 선택자</h2>
+    <p>특정한 위치에 있는 태그 선택(위치로 구분)</p>
+    <div id = test1>
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+
+    <h2>형태 구조 선택자(태그 별로 구분)</h2>
+    <P>특정한 위치에 있는 태그 선택(태그 별로 구분)</P>
+    <div id="test2">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+
+    <h2>문자 선택자</h2>
+    <p>태그 내부에서 특정 조건의 문자를 선택하는 선택자.</p>
+    <div id="test3">
+        <p>
+            어디 석가는 피가 우리 일월과 되는 인생에 같이 구하지 것이다. 눈에 못할 가슴이 그들의 가진 바로 새 어디 타오르고 철환하였는가? 듣기만 일월과 설산에서 실현에 것이다. 얼마나 것은 꾸며 사막이다. 가슴에 관현악이며, 능히 이상은 대한 소리다.이것은 위하여서, 피다. 현저하게 곳이 앞이 것이다.보라, 열매를 영락과 것은 운다. 산야에 든 두기 피어나는 수 돋고, 청춘 이것을 피부가 있다. 맺어, 인류의 하는 풍부하게 인생을 있는가? 두손을 현저하게 청춘의 황금시대다. 같이, 갑 별과 그리하였는가? 싸인 투명하되 하였으며, 풀이 이성은 거선의 그들의 위하여, 피다. 
+        </p>
+    </div>
+
+    <hr>
+
+    <h2>부전선택자</h2>
+    <p>지금까지 선택자에 대해 반대로 적용하는 선택자</p>
+    <div id="test4">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+    </div>
+
+</body>
+</html>

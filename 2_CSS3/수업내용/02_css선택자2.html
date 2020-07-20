@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css선택자 2</title>
+    <style>
+        div[name=name2]{
+            background: rgb(166, 255, 0);
+        }
+        div[name^=name]{ /* name^=name :  name이라는 값으로 시작하는 */
+            background: blueviolet;
+        }
+        div[class$=class]{ /* class로 끝나는!!*/
+            color:#fff;
+        }
+        div[class*=div]{/* div를 포함하는~*/
+            font-size: 2em;
+        }
+
+        #test1>h4{
+            background: orange;
+        }
+        #test1 h4{
+            font-size: 2em;
+        }
+        #test1 li>h4{
+            background-color: rgb(255, 214, 214);
+        }
+
+        #div-test1{
+            background: red;
+        }
+        #div-test2 + div{ /*div-test2 를 기준으로 바로 다음 div */
+            background: rgb(255, 231, 11);
+        }
+        #div-test1 ~ div{ /* 1빼고...모든 div.. 1이 기준..*/
+            background: rgba(255, 104, 104, 0.514);
+        }
+        div#active-test, div#hover-test{
+            width:300px; height: 300; 
+            background-color:rgb(219, 219, 219);
+        }
+
+        /* 반응 선택자*/
+        #active-test:active{
+            background-color: yellow;
+            color:black;
+        }
+        /* 반응 선택자*/
+        #hover-test:hover{
+            cursor: pointer;
+            background-color: rgb(137, 255, 58);
+            color: black;
+        }
+
+        input[type='checkbox']:checked{
+            /* 체크시 크기 변경*/
+            width:20px;
+            height:20px;
+        }   
+
+        /**/
+        input{
+            padding-left: 10px;
+        }
+        /* text 포커싱*/
+        #userId:focus, #password:focus{
+            background-color: rgb(180, 212, 255);
+        }    
+
+        option:disabled{
+            background-color: red;
+            color:#fff;
+        }   
+        option:enabled{
+            background-color: yellowgreen;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>속성 선택자</h2>
+    <p>기본 선택자 뒤에 []를 사용하여 속성과 속성값을 사용한다. </p>
+    <pre>선택자[속성=속성값] {속성:속성값;}의 형식으로 사용한다.</pre>
+
+    <div name="name1" class="div-class">div1</div>
+    <div name="name2" class="div-class">div2</div>
+    <div name="name3" class="div-class">div3</div>
+    <div name="name4" class="class-div">div4</div>
+
+    <h2>후손선택자와 자손선택자</h2>
+    <p>자손선택자 : 바로 아래의 요소, 후손선택자: 하위 요소 전부</p>
+    <pre>자손 선택자 : 선택자 > 자손선택자 {설정:설정값;}의 형식으로 사용 
+        후손 선택자 : 선택자 후손선택자 {설정: 설정값;}의 형식으로 사용
+    </pre>
+    <div id="test1">
+        <h4>자손입니다.</h4>
+        <h4>나도 자손입니다.</h4>
+        <ul id="testul" >리스트
+            <li>나는 ul의 자손이면서 동시에 div의 후손입니다.</li>
+            <li><h4>나는 ul의 자손이면서 동시에 div의 후손입니다.</h4></li>
+        </ul>
+    </div>
+
+        <h2>동위 선택자</h2>
+        <p>동위 관계에서 뒤에 위치한 태그를 선택할 때 사용한다.</p>
+        <pre>바로 뒤에 있는 요소를 선택시 : 선택자 a + 선택자b{설정 : 설정내용;}
+            뒤에 있는 모든 요소 선택 : 선태가 a ~ 선택자 b {설정내용}
+        </pre>
+
+        <div id="div-test1">div-test1</div>
+        <div id="div-test2">div-test2</div>
+        <div id="div-test3">div-test3</div>
+        <div id="div-test4">div-test4</div>
+        <div id="div-test5">div-test5</div>
+
+        <h2>반응선택자</h2>
+        <p>사용자의 움직임에 따라 달라지는 선택자</p>
+        <pre>사용자가 클릭한 태그 : 선택자:active{설정내용},
+            사용자의 마우스가 올라가있는 태그 : 선택자:hover{설정내용}으로 사용된다 
+        </pre>
+
+        <div id="active-test">active테스트</div>
+        <div id="hover-test">hover테스트</div>
+        
+        <h2>상태 선택자</h2>
+        <p>입력양식의 상태에 따라 선택되는 선택자</p>
+        <pre>체크 상태의 input태그 선택: input:checked{설정내용}
+        </pre>
+        <input type="checkbox" name="fruits" value="사과" id="apple"><label for="사과">사과</label>
+        <input type="checkbox" name="fruits" value="바나나" id="banana"><label for="바나나">바나나</label>
+        <input type="checkbox" name="fruits" value="복숭아" id="peach"><label for="복숭아">복숭아</label>
+        <br>
+        <pre>초점이 맞추어진 input태그 선택</pre>
+        <label for="">아이디:</label>
+        <input type="text" id="userId" placeholder="아이디를 입력하세요">
+        <input type="password" id ="password" placeholder="비밀번호를 입력하세요" >
+
+        <pre>사용가는한 input 태그 : input태그:enabled{설정내용},
+            사용 불가능한 input태그 : input태그:disabled{설정내용}
+        </pre>
+        <h3>당신의 연령대는? </h3>
+        <select name="" id="">
+            <option disabled>10대</option>
+            <option >20대</option>
+            <option >30대</option>
+            <option >40대</option>
+            <option >50대</option>
+            <option disabled>60대</option>
+        </select>
+
+
+</body>
+</html>

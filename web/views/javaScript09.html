@@ -1,0 +1,138 @@
+	<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//전역변수 선언 
+	//== window.str = "전역변수" 아무것도안쓰면 자동으로 window.이 붙음
+	str ="전역변수";
+	//함수 외부에 선언한 변수는 var를 붙여도 전역변수이다.
+	var str2 = "var 전역변수";
+	
+	//window객체사 로드될때 (시작하자마자) 동작할 함수를 익명함수 형태로 이벤트 속성에 저장
+	window.onload = function(){
+		//지역변수 
+		//지역변수 선언시 var를 붙여야한다. 
+		var str = "지역변수";
+		console.log(str);//지역변수를 더 우선적으로 취급함 
+		//전역변수에 접근하기 위해 window. 혹은 this.를 붙여야한다. 
+		console.log(this.str); //전역변수 ...?
+		//this = 내가 속해있는 객체
+		console.log(window.str);//전역변수
+		
+		str3 = "난 뭘까요?"; //작성위치는 지역이지만 앞에 안붙여서 전역변수임 
+		console.log(str3);
+		console.log(this.str3);
+		console.log(window.str3);
+		
+	}// 함수 사용 끝 ^^
+	
+</script>
+<style>
+	.area{
+		border:1px solid black;
+		height:150px;
+	}
+</style>
+</head>
+<body>
+	<h1>변수와 자료형</h1>
+	<h3>변수 선언</h3>
+	<p>함수 내부에서 var 변수명; 으로 선언하면 지역변수가 된다. <br>
+		함수내부에서 변수명;으로 선언하거나, 함수 밖에서 변수명; 혹은 var 변수명;으로 선언하면 전역변수가 된다. <br>
+		지역변수와 전역변수가 같은 이름인 경우 함수 내부에서 변수명을 호출하면 지역변수가 우선권을 가지기 때문에
+		전역변수 사용시 window.변수명 혹은 this.변수명으로 표현하여 지역변수와 구분한다. <br>
+		전역변수는 해당 window내에서 어디서든 사용할 수 있으며, 지역변수는 해당 함수에서만 사용가능하다.
+	</p>
+	
+	<hr>
+	
+	<h3>자료형</h3>
+	<p>자바스크립트에서 자료형별로 변수타입이 지정되지 않고 리터럴에 의해 자료형이 결정된다.</p>
+	<button onclick = "testType();">자료형 테스트</button>
+	<br><br>
+	<div id = "area1" class ="area"></div>
+	<script>
+	function testType(){
+		//문자열 변수 
+		var name = "소망"; //모두 문자열임 문자라는 개념이없어~ 
+		
+		console.log(name);
+		console.log(typeof(name)); //해당 변수의자료형을 알 수 있음 
+		
+		//숫자변수
+		var age = 20;
+		console.log(age);
+		console.log(typeof(age));
+		
+		//논리변수 
+		var check = true;
+		
+		console.log(check);
+		console.log(typeof(check));
+		
+		//배열변수 
+		var hobby = ["축구","농구" ,"야구"];
+		console.log(hobby);
+		console.log(typeof(hobby));
+		
+		//객체 변수
+		var user = {
+				name :"소망", //키 밸류 
+				age : 20,
+				id : "user01"			
+		};
+		console.log(user);
+		console.log(typeof(user));
+		
+		//함수변수 
+		var testFunction = function testFunction(num1,num2){
+			var sum = num1+num2;
+			alert(sum);
+		}
+		console.log(testFunction); //함수또한 하나의 자료형
+		//변수에도 ㄱ담을수있고 ㅌ리턴값으로 전달 받을 수 있고, 
+		// 함수를매개변수로 전달 할 수 도 있음
+		console.log(typeof(testFunction));
+		
+		//정의되지 않은 변수
+		var apple;
+		
+		console.log(apple);
+		console.log(typeof(apple));
+		
+		var area1 = document.getElementById("area1");
+
+		area1.innerHTML += "문자열 변수 : " +name +"<br>";
+		area1.innerHTML += "숫자변수: " +age +"<br>";
+		area1.innerHTML += "논리변수 :" +check +"<br>";
+		area1.innerHTML += "배열 : " +hobby +"<br>";
+		area1.innerHTML +="배열인덱스[0] : "+hobby[0] + "<br>"
+		area1.innerHTML += "객체 :" +user+"<br>";
+		area1.innerHTML +="객체 속성 접근 :" +user.name +"<br>";
+		area1.innerHTML += "함수 :" +testFunction +"<br>";
+		area1.innerHTML += "정의되지 않은 변수 : " + apple +"<br>";
+	}
+	</script>
+	
+	<hr>
+	
+	<h3>동적 타입 테스트</h3>
+	<button onclick="testDynamicType();">실행확인</button>
+	<script>
+		function testDynamicType(){
+			var testVariable =123;
+			
+			console.log(typeof(testVariable) + " : " +testVariable);
+			
+			testVariable = "안녕하세요";
+			console.log(typeof(testVariable) +" : " + testVariable );
+		}
+	</script>
+	
+	
+	
+	
+</body>
+</html>

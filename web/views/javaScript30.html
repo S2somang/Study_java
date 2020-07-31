@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area {
+		background:lightgray;
+		border:1px solid black;
+		height:100px;
+	}
+</style>
+</head>
+<body>
+	<h1>DOM(Document Object Model)</h1>
+	<h3>텍스트노드가 있는 노드 생성</h3>
+	<button onclick="test1();">실행확인</button>
+	<div id="area1" class="area"></div>
+	<script>
+		function test1() {
+			//element 생성
+			//<h3></h3>
+			var title = document.createElement("h3");
+			//textNode 생성
+			// 안녕? 난 뽀로로야~
+			var textNode = document.createTextNode("안녕? 난 뽀로로야~");
+			
+			//노드 연결
+			//<h3>안녕? 난 뽀로로야~</h3>
+			title.appendChild(textNode);
+			//<div id="area1" class="area"><h3>안녕? 난 뽀로로야~</h3></div>
+			document.getElementById("area1").appendChild(title);
+		}
+	</script>
+	
+	<h3>텍스트노드가 없는 노드 생성</h3>
+	<button onclick="test2();">실행확인</button>
+	<div id="area2" class="area"></div>
+	<script>
+		function test2() {
+			//img 태그 생성
+			//<img>
+			var imgTest = document.createElement("img");
+			//<img src="https://i.ytimg.com/vi/wb5YBaZZDHo/maxresdefault.jpg" width="150" height="100">
+			imgTest.src = "https://i.ytimg.com/vi/wb5YBaZZDHo/maxresdefault.jpg";
+			imgTest.width = "150"
+			imgTest.height = "100";
+			
+			//없는 속성 추가
+			//imgTest.myProperty = "123";
+			imgTest.setAttribute("myProperty", "123");
+			
+			
+			document.getElementById("area2").appendChild(imgTest);
+			
+		}
+	</script>
+	
+	<hr>
+	
+	<h3>innerHTML</h3>
+	<button onclick="test3();">실행확인</button>
+	<div id="area3" class="area">
+		<table id="board">
+			<tr>
+				<th>글번호</th>
+				<th>글제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+				<th>작성일자</th>
+			</tr>
+		</table>
+	</div>
+	<script>
+		function test3() {
+			//var board = document.getElementById("board");
+			
+			var board = document.querySelector("#board > tbody");
+			//var board = $("#board > tbody");
+			
+			var num = 1;
+			var title = "제목입니다.";
+			var user = "user01";
+			var count = 1;
+			var date = new Date();
+			
+			board.innerHTML += "<tr><td>" + num
+							+ "</td><td>" + title
+							+ "</td><td>" + user
+							+ "</td><td>" + count
+							+ "</td><td>" + date.getFullYear()
+							              + "-"
+							              + (date.getMonth() + 1)
+							              + "-"
+							              + date.getDate()
+							+ "</td></tr>";
+			
+		}
+	</script>
+	
+	<hr>
+	
+	<h3>스타일 지정</h3>
+	<button onclick="test4();">실행확인</button>
+	<div id="area4" class="area"></div>
+	<script>
+		function test4() {
+			var area4 = document.getElementById("area4");
+			//<div style="background-color:red;"></div>
+			area4.style.backgroundColor = "orangered";
+			area4.style.borderRadius = "50px";
+			area4.style.transition = "2s";var area4 = document.getElementById("area4");
+			//<div style="background:red;"></div>
+			area4.style
+		}
+	</script>
+	
+	<h3>노드 삭제</h3>
+	<button onclick="test5();">실행확인</button>
+	<div id="area5" class="area"></div>
+	<script>
+		function test5() {
+			var area5 = document.getElementById("area5");
+			
+			area5.remove();
+		}
+	</script>
+	
+	
+	
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

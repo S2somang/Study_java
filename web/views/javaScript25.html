@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area{
+		height:100px;
+		background :lightgray;
+		border:1px solid black;
+	}
+</style>
+</head>
+<body>
+	<h1>객체관련키워드</h1>
+	<h3>new키워드</h3>
+	<button onclick = "test1();">new 확인하기</button>
+	<div id ="area1" class="area"></div>
+	<script>
+		function Duck(firstName, lastName){
+			this.firstName= firstName; //전역변수
+			this.lastName = lastName;  // 객체가 생성되기 전에는 window 
+			//객체 생성후에는 뭐라고..?
+		}
+	
+		function test1() {
+			var duck1 = new Duck("Mc", "Donald"); //객체를 만들어줌
+			
+			var area2 = document.getElementById("area1");
+			
+			area1.innerHTML += "첫 번째 오리의 full name은 " + duck1.firstName + duck1.lastName + "입니다.<br>";
+		
+			var duck2 = Duck("Donald", "Trump"); //그냥 앞글자가 대문자인함수를 호출한거랑 같음
+			console.log(duck2);
+			
+			area1.innerHTML += "두번째 오리의 full name 은" + this.fristName + this.lastName +"입니다.<br>";
+						//							window.firstName , window.lastName도 가능 (같은말임)
+			
+		}
+		
+	</script>
+</body>
+</html>

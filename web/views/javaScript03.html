@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area{
+	border:1px solid red;
+	height:100px;
+	}
+</style>
+</head>
+<body>
+	<h1>HTML태그에 접근하기</h1>
+	<h3>아이디로 접근</h3>
+	<div id = "area1" class="area"></div>
+	<button onclick="accessId();" >아이디로 접근</button>
+	<script>
+		function accessId(){
+			var area1 = document.getElementById("area1");
+			
+			area1.style.backgroundColor="yellow";
+			area1.style.color="red";
+			area1.innerHTML += "아이디로 접근 성공! <br>"
+		}
+	</script>
+	
+	<h3>태그명으로 접근</h3>
+	<ul>
+	<li>목록1</li>
+	<li>목록2</li>
+	<li>목록3</li>
+	<li>목록4</li>
+	<li>목록5</li>
+	</ul>
+	
+	<button onclick ="accessTagName();">태그명으로 접근</button>
+	<script> 
+		function accessTagName(){
+			var list = document.getElementsByTagName("li");
+//getElementsByTagName e동일한 태그들을 배열형식으로 가져옴 
+			// console.table(list);
+			console.log(list);
+
+			var changeColor=50;
+			// for(var i in list){ //for in 문
+			// 	list[i].style.background="rgb(130,220,"+changeColor+")";
+			// 	changeColor+= 50;
+
+			// }
+
+			for(var i = 0; i< list.length; i++){
+			 	list[i].style.background="rgb(130,220,"+changeColor+")";
+				changeColor+= 50;
+			}
+
+
+		}
+	
+	</script>
+	
+	<h3>name으로 접근</h3>
+	<form action="">
+		<fieldset>
+			<legend>취미</legend>
+			<table>
+				<tr>
+					<td>
+						<input type="checkbox" name ="hobby" value ="game" id ="game">
+						<label for = game>게임</label>
+					</td>
+					<td>
+						<input type="checkbox" name = "hobby" value ="music" id="music">
+						<label for="music">음악감상</label>
+					</td>
+					<td>
+						<input type="checkbox" name = "hobby" value ="movie" id="movie">
+						<label for="movie">영화보기</label>
+
+					</td>
+				</tr>
+
+			<tr>
+				<td>
+					<input type="checkbox" name = "hobby" value ="reading" id="reading">
+					<label for="reading">독서</label>
+				</td>
+				<td>
+					<input type="checkbox" name = "hobby" value ="trip" id="trip">
+					<label for="music">여행</label>
+				</td>
+				<td>
+					<input type="checkbox" name = "hobby" value ="sports" id="sports">
+					<label for="sports">운동</label>
+				</td>
+			</tr>
+			</table>
+		</fieldset>
+	</form>
+
+
+	<div id ="area2" class="area"></div>
+	<button onclick="accessName();">name으로 접근</button>
+	<script>
+		function accessName(){
+			var hobby = document.getElementsByName("hobby");
+			 
+			var checkedItem ="";
+			for(var i = 0; i<hobby.length; i++){
+				if(hobby[i].checked){
+					checkedItem+= hobby[i].value +"선택함 <br>";
+				}
+			}
+			document.getElementById("area2").innerHTML = checkedItem;
+		}
+	</script>
+	
+	
+	
+	
+	
+</body>
+</html>

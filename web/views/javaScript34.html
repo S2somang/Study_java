@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h1,h2,h3{text-align:center;}
+	form {width:500px; margin:0 auto; background:#ddd;padding:10px 0; border:1px solid black;} 
+	table{margin:0 auto;}
+</style>
+</head>
+<body>
+	<h1>비밀번호 유효성 실습</h1>
+	<!-- 테이블 -->
+	
+	<form>
+		<h3 align ="center">회원가입</h3>
+		<table>
+			<tr>
+				<td>
+					<label>아이디 :</label>
+				</td>
+				<td>
+					<input type ="text" name ="id" id="id">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>비밀번호 :</label>
+				</td>
+				<td>
+					<input type="password" name ="password" id="password">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>비밀번호확인:</label>
+				</td>
+				<td>
+					<input type="password" name="password2" id="password2">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>이름 : </label>
+				</td>
+				<td>
+					<input type="text" name ="name" id="name">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align:center; height:50px">
+					<!-- <input type="submit" value="회원가입" onclick="check()"> -->
+					<input type="submit" value="asdasd" onclick="return test();"> 
+					<input type ="reset" value="취소">
+				</td>
+				
+			</tr>
+		</table>
+	</form>
+	<script>
+		function test() {
+			var id = document.getElementById("id").value;
+			var password = document.getElementById("password");
+			var password2 = document.getElementById("password2");
+			var name = document.getElementById("name").value;
+			
+			if (password.value === password2.value) {
+				return true;
+			}
+			else {
+				alert("msg");
+				password.style.backgroundColor="red";
+				password2.style.backgroundColor = "red";
+				password.select();
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>
